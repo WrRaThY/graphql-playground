@@ -3,6 +3,7 @@ package priv.rdo.graphql.storage;
 import org.springframework.stereotype.Component;
 import priv.rdo.graphql.storage.model.Author;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,17 +13,20 @@ public class AuthorRepository {
             new Author(
                     "author-1",
                     "Joanne",
-                    "Rowling"
+                    "Rowling",
+                    LocalDate.of(1965, 7, 31)
             ),
             new Author(
                     "author-2",
                     "Herman",
-                    "Melville"
+                    "Melville",
+                    LocalDate.of(1819, 8, 1)
             ),
             new Author(
                     "author-3",
                     "Anne",
-                    "Rice"
+                    "Rice",
+                    LocalDate.of(1941, 8, 4)
             )
     );
 

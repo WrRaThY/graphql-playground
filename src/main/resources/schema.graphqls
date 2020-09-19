@@ -7,6 +7,7 @@ type Book {
   id: ID!
   name: String!
   pageCount: Int
+  releaseDate: LocalDate
   author: Author
 }
 
@@ -14,5 +15,18 @@ type Author {
   id: ID!
   firstName: String!
   lastName: String!
+  birthDate: LocalDate
   books: [Book]!
 }
+
+# Absolute url with domain, eg https://jdk.java.net/15/
+scalar URI
+
+# day of year, in ISO-8601 YYYY-MM-dd format, eg 2020-08-22
+scalar LocalDate
+
+# offset date time in ISO-8601 YYYY-MM-dd'T'HH:mm:ssXXXXX format, eg 2020-06-16T20:00:43.765156Z
+scalar DateTime
+
+# Used to indicate a null response
+scalar Void
