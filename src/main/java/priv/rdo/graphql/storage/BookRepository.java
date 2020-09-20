@@ -1,5 +1,7 @@
 package priv.rdo.graphql.storage;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import priv.rdo.graphql.storage.model.Book;
 
@@ -11,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class BookRepository {
+    private static final Logger LOG = LogManager.getLogger(BookRepository.class);
 
     //TODO change to actual DB
     private static final List<Book> books = List.of(
@@ -44,12 +47,16 @@ public class BookRepository {
     );
 
     public Optional<Book> findById(String id) {
+        LOG.info("findById id: {}, thread: {}", id, Thread.currentThread().getName());
+
         return books.stream()
                 .filter(item -> item.id().equals(id))
                 .findFirst();
     }
 
     public Collection<Book> booksByAuthorId(String id) {
+        LOG.info("booksByAuthorId id: {}, thread: {}", id, Thread.currentThread().getName());
+
         return books.stream()
                 .filter(item -> item.authorId().equals(id))
                 .collect(Collectors.toList());
